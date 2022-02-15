@@ -6,13 +6,21 @@ export default function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('https://api.opensea.io/api/v1/assets').then(response => {
+    const options = {
+      method: 'GET',
+      url: 'https://api.opensea.io/api/v1/assets',
+      params: { collection: 'cryptopunks', limit: '5' }
+    };
+    
+    axios.request(options)
+    .then(function (response) {
       setData(response.data);
       console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    })
+    }).catch(function (error) {
+      console.error(error);
+    });
   }, []);
+
 
   return (
     <>
