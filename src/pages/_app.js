@@ -4,6 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from "../styles/theme";
 import GlobalStyle from '../styles/global';
 import Navbar from '../components/Navbar';
+import 'swiper/swiper.scss';
+import 'swiper/swiper-bundle.css';
 
 export default function MyApp({ Component, pageProps }) {
   const [isDarkTheme, setIsDarkTheme] = useState(false);

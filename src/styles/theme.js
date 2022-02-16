@@ -7,5 +7,5 @@ export const lightTheme = {
 export const darkTheme = {
   title: 'dark',
   text: "#fff",
-  background: "#000"
+  background: "#0D1117"
 };
