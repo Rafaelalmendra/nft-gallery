@@ -36,6 +36,11 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+  a {
+    all: unset;
+    cursor: pointer;
+  }
+
   .margin {
     margin: 0 25rem 0 25rem;
 
