@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from "../styles/theme";
 import GlobalStyle from '../styles/global';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import 'swiper/swiper.scss';
 import 'swiper/swiper-bundle.css';
 
@@ -18,6 +19,7 @@ export default function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Navbar toggleTheme={toggleTheme} isDarkTheme={isDarkTheme}/>
       <Component {...pageProps} />
+      <Footer />
       <GlobalStyle />
     </ThemeProvider>
   );

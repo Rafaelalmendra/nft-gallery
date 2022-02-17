@@ -5,7 +5,7 @@ export const Container = styled.div`
 
   h3 {
     font-size: 1.875rem;
-    font-weight: 500;
+    font-weight: 400;
   }
 `
 
