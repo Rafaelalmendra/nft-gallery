@@ -11,13 +11,13 @@ import Cards from "./Cards";
 export default function MoreCollections() {
   const [ itens, setItens ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState(0);
-  const [ itensPerPage ] = useState(40);
+  const [ itensPerPage ] = useState(14);
 
   useEffect(() => {
     const options = {
       method: 'GET',
-      url: 'https://api.opensea.io/api/v1/collections',
-      params: {offset: '0', limit: '300'},
+      url: 'https://api.opensea.io/api/v1/assets',
+      params: { limit: '50' },
       headers: {Accept: 'application/json'}
     };
 
@@ -29,7 +29,7 @@ export default function MoreCollections() {
     });
   }, []);
 
-  const collection = itens.collections;
+  const collection = itens.assets;
 
   const startIndex = currentPage * itensPerPage;
   const endIndex = startIndex + itensPerPage;
@@ -52,7 +52,7 @@ export default function MoreCollections() {
 
         <button 
           onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={currentPage === 8}
+          disabled={currentPage === 3}
         >
           <i className="material-icons-outlined">
             chevron_right

@@ -3,7 +3,7 @@ import MoreCollections from "../components/MoreCollections";
 
 import Slide from "../components/Slide";
 import TopCollections from "../components/TopCollections";
-import { Container } from '../styles/home/styles';
+import { Container } from '../styles/home';
 
 export default function Home() {
   return (

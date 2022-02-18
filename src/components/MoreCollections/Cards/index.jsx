@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import {
   CardCollection,
   Informations
@@ -9,14 +10,16 @@ export default function Cards({ data }) {
     <>
       {data?.map((item) => (
         <>
-          {item.image_url === null ? (
-            null              
+          {item.collection.image_url === null ? (
+            null
           ) : (
-            <CardCollection key={item.slug}>
-              <img src={item.image_url} alt={item.name} />
+            <CardCollection>
+              <img src={item.collection.image_url} alt={item.name} />
               <Informations>
-                <p>{item.name}</p>
-                <button>View more</button>
+                <p>{item.collection.name}</p>
+                <Link href={`/assets/${item.collection.slug}`}>
+                  <a><button>View more</button></a>
+                </Link>
               </Informations>
             </CardCollection>
           )}

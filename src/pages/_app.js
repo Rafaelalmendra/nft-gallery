@@ -9,7 +9,7 @@ import 'swiper/swiper.scss';
 import 'swiper/swiper-bundle.css';
 
 export default function MyApp({ Component, pageProps }) {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);
