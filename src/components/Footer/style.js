@@ -9,6 +9,10 @@ export const Container = styled.footer`
 
   background: var(--blue);
 
+  p {
+    color: var(--white);
+  }
+
   span {
     margin-left: 0.3rem;
     color: var(--green);

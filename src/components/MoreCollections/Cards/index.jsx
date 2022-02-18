@@ -12,16 +12,20 @@ export default function Cards({ data }) {
         <>
           {item.collection.image_url === null ? (
             null
+          ) : item.image_url === null ? (
+            null
           ) : (
-            <CardCollection>
-              <img src={item.collection.image_url} alt={item.name} />
-              <Informations>
-                <p>{item.collection.name}</p>
-                <Link href={`/assets/${item.collection.slug}`}>
-                  <a><button>View more</button></a>
-                </Link>
-              </Informations>
-            </CardCollection>
+            <Link href={`/collection/${item.collection.slug}`}>
+              <a>
+                <CardCollection>
+                  <img src={item.collection.image_url} alt={item.name} />
+                  <Informations>
+                    <p>{item.collection.name}</p>
+                      <button>View more</button>
+                  </Informations>
+                </CardCollection>
+              </a>
+            </Link>
           )}
         </>
       ))}

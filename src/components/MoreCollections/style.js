@@ -15,7 +15,7 @@ export const ContainerCollections = styled.div`
   display: grid;
   grid-template-columns: 33.33% 33.33% 33.33%;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
 `
 
 export const CardCollection = styled.div`
@@ -28,6 +28,13 @@ export const CardCollection = styled.div`
   padding-bottom: 1.6rem;
 
   border-bottom: 1px solid;
+
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 
   img {
     border-radius: 50%;

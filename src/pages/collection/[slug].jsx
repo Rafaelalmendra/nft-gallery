@@ -5,13 +5,16 @@ import axios from "axios";
 
 import {
   Container,
-
-} from '../../styles/collection';
+  CardContainer,
+  Card,
+  Informations,
+  DateInfo
+} from '../../styles/assets/style';
 
 export default function Collection() {
+  const [ liked, setLiked ] = useState(false);
   const [ collection, setCollection ] = useState([]);
   const router = useRouter();
-
   const slugCollection = router.query.slug;
 
   useEffect(() => {
@@ -24,7 +27,7 @@ export default function Collection() {
           limit: '40',
         },
         headers: { Accept: 'application/json' }
-      }
+      };
 
       axios.request(options).then(function (response) {
         console.log(response.data);
@@ -32,19 +35,32 @@ export default function Collection() {
       }).catch(function (error) {
         console.error(error);
       });
-    }
+    };
   }, [ slugCollection ]);
 
   return (
-    <Container>
-      <p>{slugCollection}</p>
-      {collection.assets?.map((item) => (
-        <>
-          <img src={item.image_url} alt="" />
-          <p>{router.query.slug}</p>
-          <p>{item.id}</p>
-        </>
-      ))}
+    <Container className="margin">
+      <h2>{slugCollection}</h2>
+
+      <CardContainer>
+        {collection.assets?.map((item) => (
+          <>
+            <Card>
+              <img src={item.image_url} alt="" />
+              <Informations>
+                <p>{item.name}</p>
+                <DateInfo>
+                  <i className="material-icons-outlined">calendar_today</i>
+                  {new Intl.DateTimeFormat('pt-BR').format(
+                    new Date(item.asset_contract.created_date)
+                  )}
+                </DateInfo>
+                <div className="divider"></div>
+              </Informations>
+            </Card>
+          </>
+        ))}
+      </CardContainer>
     </Container>
   );
 };
