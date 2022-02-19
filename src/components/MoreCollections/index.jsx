@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import {
-  Container,
-  ContainerCollections,
-  Pagination
-} from './style';
 import Cards from "./Cards";
+import { Container, Pagination } from './style';
 
 export default function MoreCollections() {
   const [ itens, setItens ] = useState([]);
   const [ currentPage, setCurrentPage ] = useState(0);
   const [ itensPerPage ] = useState(14);
+  const [ isFetching, setIsFetching ] = useState(true);
 
   useEffect(() => {
     const options = {
@@ -21,12 +18,17 @@ export default function MoreCollections() {
       headers: {Accept: 'application/json'}
     };
 
-    axios.request(options).then(function (response) {
-      console.log(response.data);
-      setItens(response.data);
-    }).catch(function (error) {
-      console.error(error);
-    });
+    axios.request(options)
+      .then(function (response) {
+        console.log(response.data);
+        setItens(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      })
+      .finally(() => {
+        setIsFetching(false);
+      });
   }, []);
 
   const collection = itens.assets;
@@ -38,10 +40,7 @@ export default function MoreCollections() {
   return (
     <Container className="margins">
       <h3>More Collections</h3>
-      <ContainerCollections>
-        <Cards data={currentDatas} />
-      </ContainerCollections>
-
+      <Cards data={currentDatas} isFetching={isFetching} />
       <Pagination>
         <button 
           onClick={() => setCurrentPage(currentPage - 1)}

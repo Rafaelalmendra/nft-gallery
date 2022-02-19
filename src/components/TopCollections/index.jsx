@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
+
 import { images } from './images';
+import { Container } from './styles';
 import { 
-  Container,
   ContainerCollections,
   CardCollection,
   Informations,
-} from './styles';
+} from '../../styles/cards';
 
 export default function TopCollections() {
   return (
@@ -14,14 +16,18 @@ export default function TopCollections() {
 
       <ContainerCollections>
         {images.map(image => (
-          <>
-            <CardCollection>
-              <img src={image.src} alt={image.alt} />
-              <Informations>
-                <p>{image.title}</p>
-                <button>View more</button>
-              </Informations>
-            </CardCollection>
+          <> 
+            <Link href={image.link}>
+              <a>
+                <CardCollection>
+                  <img src={image.src} alt={image.alt} />
+                  <Informations>
+                    <p>{image.title}</p>
+                    <button>View more</button>
+                  </Informations>
+                </CardCollection>
+              </a>
+            </Link>
           </>
         ))}
       </ContainerCollections>

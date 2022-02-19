@@ -9,10 +9,9 @@ import {
   Card,
   Informations,
   DateInfo
-} from '../../styles/assets/style';
+} from '../../styles/collection/style';
 
 export default function Collection() {
-  const [ liked, setLiked ] = useState(false);
   const [ collection, setCollection ] = useState([]);
   const router = useRouter();
   const slugCollection = router.query.slug;
@@ -51,7 +50,7 @@ export default function Collection() {
                 <p>{item.name}</p>
                 <DateInfo>
                   <i className="material-icons-outlined">calendar_today</i>
-                  {new Intl.DateTimeFormat('pt-BR').format(
+                  {new Intl.DateTimeFormat('en-US').format(
                     new Date(item.asset_contract.created_date)
                   )}
                 </DateInfo>
