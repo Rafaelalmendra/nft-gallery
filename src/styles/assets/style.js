@@ -10,7 +10,6 @@ export const Container = styled.div`
 export const AssetContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 2.625rem;
   margin-top: 10rem;
 `
@@ -42,7 +41,6 @@ export const Informations = styled.div`
   max-width: 25.188rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 1.5rem;
 
   h2 {
@@ -104,12 +102,26 @@ export const Content = styled.div`
     color: var(--blue);
     cursor: pointer;
   }
+
+  p {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 2; 
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
 `
 
 export const MoreCollections = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 4rem;
+  padding-bottom: 0.5rem;
+  
+  font-family: 'Poppins', sans-serif;
   border: 1px solid var(--gray);
+  border-radius: 4px;
 `
 
 export const HeaderCollections = styled.div`
@@ -118,18 +130,64 @@ export const HeaderCollections = styled.div`
   height: 3rem;
   border-bottom: 1px solid var(--gray);
   margin-bottom: 1rem;
+  gap: 0.688rem;
+
+  i {
+    padding-left: 1.313rem;
+  }
 `
 
 export const ContainerCollections = styled.div`
   min-width: 25.188rem;
+  height: 21rem;
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
 `
 
 export const CardCollection = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.75rem;
+
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
   
   img {
     width: 13.313rem;
     height: 13.313rem;
+  }
+`
+
+export const CollectionsInformations = styled.div`
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+
+  .divider {
+    width: 100%;
+    border: 1px solid;
+    opacity: 0.8;
+    margin-top: 0.4rem;
+  }
+`
+
+export const DateInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  i {
+    font-size: 0.9rem;
   }
 `

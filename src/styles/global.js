@@ -43,6 +43,21 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+  //scrollbar
+  ::-webkit-scrollbar {
+    height: 0.65rem;
+    width: 0.625rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: none;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--gray);
+  }
+
   .swiper-wrapper {
     padding-inline-start: 0;
   }

@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import axios from "axios";
 
 import {
@@ -15,13 +16,16 @@ import {
   ContainerCollections,
   CardCollection,
   MoreCollections,
-  HeaderCollections
+  HeaderCollections,
+  CollectionsInformations,
+  DateInfo
 } from '../../styles/assets/style';
 
 export default function Asset() {
   const [ asset, setAsset ] = useState([]);
   const [ collections, setCollections ] = useState([])
-  const [ isFetching, setIsFetching ] = useState(true);
+  const [ assetFetching, setAssetFetching ] = useState(true);
+  const [ collectionFetching, setCollectionFetching ] = useState(true);
   const router = useRouter();
   const { params } = router.query;
 
@@ -42,7 +46,7 @@ export default function Asset() {
         console.error(error);
       })
       .finally(() => {
-        setIsFetching(false);
+        setAssetFetching(false);
       })
   }, [ params ]);
 
@@ -69,7 +73,7 @@ export default function Asset() {
           console.error(error);
         })
         .finally(() => {
-          setIsFetching(false);
+          setCollectionFetching(false);
         });
   }, [ slugAsset ]);
 
@@ -80,12 +84,11 @@ export default function Asset() {
       </Head>
 
       <Container className="margin">
-        {isFetching === true ? (
+        {assetFetching === true ? (
           <div className="loading">
             <div className="lds-dual-ring"></div>
           </div>
         ) : (
-        <>
           <AssetContainer>
             <ImageAndOwner>
               <img src={asset.image_url} alt={asset.name} />
@@ -125,23 +128,43 @@ export default function Asset() {
               </a>
             </Informations>
           </AssetContainer>
-          
+        )}
+
+        {collectionFetching === true ? (
+          <div className="loading">
+            <div className="lds-dual-ring"></div>
+          </div>
+        ) : (
           <MoreCollections>
             <HeaderCollections>
+              <i className="material-icons">view_module</i>
               <p>More From This Collection</p>
             </HeaderCollections>
 
             <ContainerCollections>
               {collections.assets?.map(item => (
-                <>
-                  <CardCollection>
-                    <img src={item.image_url} alt="" />
-                  </CardCollection>
+                <> 
+                  <Link href={`/assets/${item.asset_contract.address}/${item.token_id}`}>
+                    <a>
+                      <CardCollection>
+                        <img src={item.image_url} alt="" />
+                        <CollectionsInformations>
+                          <p>{item.name}</p>
+                          <DateInfo>
+                            <i className="material-icons-outlined">calendar_today</i>
+                            {new Intl.DateTimeFormat('en-US').format(
+                              new Date(item.asset_contract.created_date)
+                            )}
+                          </DateInfo>
+                          <div className="divider"></div>
+                        </CollectionsInformations>
+                      </CardCollection>
+                    </a>
+                  </Link>
                 </>
               ))}
             </ContainerCollections>
           </MoreCollections>
-        </>
         )}
       </Container>
     </>
