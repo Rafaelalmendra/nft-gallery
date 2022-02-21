@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import axios from "axios";
 
 import {
@@ -19,18 +21,35 @@ export default function Asset() {
       headers: { Accept: 'application/json' }
     };
     
-    axios.request(options).then(function (response) {
-      setAsset(response.data);
-      console.log(response.data);
-    }).catch(function (error) {
-      console.error(error);
-    });
-  }, [ params]);
+    axios.request(options)
+      .then(function (response) {
+        setAsset(response.data);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      })
+      .finally(() => {
+        setIsFetching(false);
+      })
+  }, [ params ]);
 
   return (
-    <Container>
-      <h2>{asset.name}</h2>
-      <h1>teste</h1>
-    </Container>
+    <>
+      <Head>
+        <title>NFTCLUB | {asset.name}</title>
+      </Head>
+
+      <Container>
+        {isFetching && (
+          <div className="loading">
+            <div className="lds-dual-ring"></div>
+          </div>
+        )}
+
+        <h2>{asset.name}</h2>
+        <h1>teste</h1>
+      </Container>
+    </>
   );
 };
