@@ -4,16 +4,17 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import axios from "axios";
 
-import {
-  Container
-} from '../../styles/assets/style';
+import AssetDetails from '../../components/AssetDetails';
+import { Container } from '../../styles/assets/style';
 
 export default function Asset() {
   const [ asset, setAsset ] = useState([]);
+  const [ collections, setCollections ] = useState([])
   const [ isFetching, setIsFetching ] = useState(true);
   const router = useRouter();
   const { params } = router.query;
 
+  //asset-fetching
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -34,21 +35,57 @@ export default function Asset() {
       })
   }, [ params ]);
 
+  //asset-collections
+  const slugAsset = asset.collection?.slug;
+
+  useEffect(() => {
+      const options = {
+        method: 'GET',
+        url: 'https://api.opensea.io/api/v1/assets',
+        params: {
+          collection: slugAsset,
+          limit: '15',
+        },
+        headers: { Accept: 'application/json' }
+      };
+
+      axios.request(options)
+        .then(function (response) {
+          console.log(response.data);
+          setCollections(response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        })
+        .finally(() => {
+          setIsFetching(false);
+        });
+  }, [ slugAsset ]);
+
   return (
     <>
       <Head>
         <title>NFTCLUB | {asset.name}</title>
       </Head>
 
-      <Container>
-        {isFetching && (
+      <Container className="margin">
+        {isFetching === true ? (
           <div className="loading">
             <div className="lds-dual-ring"></div>
           </div>
-        )}
+        ) : (
+          <>
+            <AssetDetails asset={asset}/>
 
-        <h2>{asset.name}</h2>
-        <h1>teste</h1>
+            {/*more-from-this.collection 
+              {collections.assets?.map(item => (
+                <>
+                  <img src={item.image_url} alt="" />
+                </>
+              ))}
+            */}
+          </>
+        )}
       </Container>
     </>
   );

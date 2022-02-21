@@ -4,7 +4,9 @@ export default createGlobalStyle`
   :root {
     --white: #fff;
     --black: #000;
+    --gray: #B1B1B1;
     --blue: #2081E2;
+    --blue-hover: #1C75CF;
     --green: #75FCBA;
   }
 

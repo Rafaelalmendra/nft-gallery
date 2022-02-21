@@ -39,8 +39,9 @@ export default function MoreCollections() {
 
   return (
     <Container className="margins">
-      <Cards data={currentDatas} isFetching={isFetching} />
       <h3>More Collections</h3>
+      
+      <Cards data={currentDatas} isFetching={isFetching} />
       <Pagination>
         <button 
           onClick={() => setCurrentPage(currentPage - 1)}
