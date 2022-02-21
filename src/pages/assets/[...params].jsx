@@ -4,8 +4,19 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import axios from "axios";
 
-import AssetDetails from '../../components/AssetDetails';
-import { Container } from '../../styles/assets/style';
+import {
+  Container,
+  AssetContainer,
+  ImageAndOwner,
+  Informations,
+  Description,
+  Header,
+  Content,
+  ContainerCollections,
+  CardCollection,
+  MoreCollections,
+  HeaderCollections
+} from '../../styles/assets/style';
 
 export default function Asset() {
   const [ asset, setAsset ] = useState([]);
@@ -74,17 +85,63 @@ export default function Asset() {
             <div className="lds-dual-ring"></div>
           </div>
         ) : (
-          <>
-            <AssetDetails asset={asset}/>
+        <>
+          <AssetContainer>
+            <ImageAndOwner>
+              <img src={asset.image_url} alt={asset.name} />
+              <p>Owned by <span>{asset.owner?.user?.username}</span></p>
+            </ImageAndOwner>
 
-            {/*more-from-this.collection 
+            <Informations>
+              {asset.name === null ? (
+                <h2>Name not found</h2>
+              ) : (
+                <h2>{asset.name}</h2>
+              )}
+              <Description>
+                <Header>
+                  <i className="material-icons-outlined">subject</i>
+                  <p>Description</p>
+                </Header>
+
+                <Content>
+                  {asset.description === null ? (
+                    <p>No description</p>
+                  ) : (
+                    <p>{asset.description}</p>
+                  )}
+                  <p>Created by <span>{asset.creator?.user?.username}</span></p>
+                </Content>
+              </Description>
+              <a 
+                href={asset.permalink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button>
+                  View on Opensea
+                  <img src="/images/opensea.svg" alt="logo opensea" />
+                </button>
+              </a>
+            </Informations>
+          </AssetContainer>
+          
+          <MoreCollections>
+            <HeaderCollections>
+              <p>More From This Collection</p>
+            </HeaderCollections>
+
+            <ContainerCollections>
               {collections.assets?.map(item => (
                 <>
-                  <img src={item.image_url} alt="" />
+                  <CardCollection>
+                    <img src={item.image_url} alt="" />
+                  </CardCollection>
                 </>
               ))}
-            */}
-          </>
+            </ContainerCollections>
+          </MoreCollections>
+        </>
         )}
       </Container>
     </>
