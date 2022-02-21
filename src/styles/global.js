@@ -116,15 +116,15 @@ export default createGlobalStyle`
     margin: 0 25rem 0 25rem;
 
     @media (max-width: 1680px) {
-      margin: 0 20rem 0 20rem;
+      margin: 0 18rem 0 18rem;
     }
 
     @media (max-width: 1440px) {
-      margin: 0 15rem 0 15rem;
+      margin: 0 12rem 0 12rem;
     }
 
     @media (max-width: 1366px) {
-      margin: 0 10rem 0 10rem;
+      margin: 0 8rem 0 8rem;
     }
 
     @media (max-width: 1112px) {

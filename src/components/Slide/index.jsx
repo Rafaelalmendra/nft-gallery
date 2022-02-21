@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 
-import { images } from './images';
+import { images, imagesMobile } from './images';
 import { Container, } from './style';
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -18,7 +18,13 @@ export default function Slide() {
         wrapperTag="ul"
       >
         {images.map(image => (
-          <SwiperSlide key={image.id}>
+          <SwiperSlide key={image.id} className="desktop">
+            <img src={image.src} alt={image.alt} />
+          </SwiperSlide>
+        ))}
+
+        {imagesMobile.map(image => (
+          <SwiperSlide key={image.id} className="mobile">
             <img src={image.src} alt={image.alt} />
           </SwiperSlide>
         ))}

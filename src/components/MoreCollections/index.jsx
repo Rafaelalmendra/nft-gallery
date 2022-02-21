@@ -39,7 +39,7 @@ export default function MoreCollections() {
 
   return (
     <Container className="margins">
-      <h3>More Collections</h3>
+      <h3>More collections</h3>
       
       <Cards data={currentDatas} isFetching={isFetching} />
       <Pagination>

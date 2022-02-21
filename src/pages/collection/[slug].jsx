@@ -65,7 +65,7 @@ export default function Collection() {
               <Link href={`/assets/${item.asset_contract.address}/${item.token_id}`}>
                 <a>
                   <Card>
-                    {item.image_url === "" ? (
+                    {item.image_url === null ? (
                       null
                     ) : (
                       <img src={item.image_url} alt="" />
