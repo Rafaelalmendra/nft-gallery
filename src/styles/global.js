@@ -61,15 +61,7 @@ export default createGlobalStyle`
   .swiper-wrapper {
     padding-inline-start: 0;
   }
-
-  .swiper-pagination-bullet {
-    opacity: 1;
-    width: 4rem;
-    height: 2px;
-    background: var(--black);
-    opacity: 0.3;
-  }
-
+  
   .swiper-pagination-bullet-active {
     background: var(--white);
     opacity: 1;

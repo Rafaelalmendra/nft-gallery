@@ -71,7 +71,11 @@ export default function Collection() {
                       <img src={item.image_url} alt="" />
                     )}
                     <Informations>
-                      <p>{item.name}</p>
+                      {item.name === null ? (
+                        <p>{slugCollection}</p>
+                      ) : (
+                        <p>{item.name}</p>
+                      )}
                       <DateInfo>
                         <i className="material-icons-outlined">calendar_today</i>
                         {new Intl.DateTimeFormat('en-US').format(
