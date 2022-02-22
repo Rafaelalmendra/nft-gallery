@@ -12,6 +12,10 @@ export const AssetContainer = styled.div`
   justify-content: center;
   gap: 2.625rem;
   margin-top: 10rem;
+
+  @media (max-width: 991.98px) {
+    
+  }
 `
 
 export const ImageAndOwner = styled.div`
