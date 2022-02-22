@@ -91,15 +91,16 @@ export default function Asset() {
         ) : (
           <AssetContainer>
             <ImageAndOwner>
+              <h2 className="mobile">{asset.name}</h2>
               <img src={asset.image_url} alt={asset.name} />
               <p>Owned by <span>{asset.owner?.user?.username}</span></p>
             </ImageAndOwner>
 
             <Informations>
               {asset.name === null ? (
-                <h2>Name not found</h2>
+                <h2 className="desktop">Name not found</h2>
               ) : (
-                <h2>{asset.name}</h2>
+                <h2 className="desktop">{asset.name}</h2>
               )}
               <Description>
                 <Header>

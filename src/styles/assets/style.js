@@ -13,8 +13,22 @@ export const AssetContainer = styled.div`
   gap: 2.625rem;
   margin-top: 10rem;
 
+  .mobile {
+    display: none;
+  }
+
   @media (max-width: 991.98px) {
-    
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    .desktop {
+      display: none;
+    }
+
+    .mobile {
+      display: flex;
+    }
   }
 `
 
@@ -30,13 +44,39 @@ export const ImageAndOwner = styled.div`
     border-radius: 4px;
   }
 
+  h2 {
+    max-width: 25.188rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.25rem;
+  }
+
   p {
+    text-align: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
 
     span {
       color: var(--blue);
       cursor: pointer;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    h2 {
+      font-size: 1.375rem;
+    }
+
+    p {
+      text-align: center;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 447px) {
+    width: 100%;
+
+    img {
+      width: 100%;
     }
   }
 `
@@ -72,6 +112,10 @@ export const Informations = styled.div`
     &:hover {
       filter: brightness(0.9);
     }
+
+    @media (max-width: 447px) {
+      font-size: 0.875rem;
+    }
   }
 `
 
@@ -81,6 +125,10 @@ export const Description = styled.div`
   font-family: 'Poppins', sans-serif;
   border: 1px solid var(--gray);
   border-radius: 4px;
+
+  @media (max-width: 447px) {
+    width: 100%;
+  }
 `
 
 export const Header = styled.div`
@@ -91,6 +139,14 @@ export const Header = styled.div`
 
   p, i {
     padding-left: 0.5rem;
+  }
+
+  @media (max-width: 447px) {
+    height: 2.5rem;
+
+    p {
+      font-size: 0.875rem;
+    }
   }
 `
 
@@ -115,6 +171,10 @@ export const Content = styled.div`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
+
+  @media (max-width: 447px) {
+    font-size: 0.7rem;
+  }
 `
 
 export const MoreCollections = styled.div`
@@ -126,6 +186,10 @@ export const MoreCollections = styled.div`
   font-family: 'Poppins', sans-serif;
   border: 1px solid var(--gray);
   border-radius: 4px;
+
+  @media (max-width: 447px) {
+    margin-top: 1.5rem;
+  }
 `
 
 export const HeaderCollections = styled.div`
@@ -139,6 +203,14 @@ export const HeaderCollections = styled.div`
   i {
     padding-left: 1.313rem;
   }
+
+  @media (max-width: 447px) {
+    height: 2.5rem;
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
 `
 
 export const ContainerCollections = styled.div`
@@ -147,6 +219,11 @@ export const ContainerCollections = styled.div`
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
+
+  @media (max-width: 447px) {
+    min-width: 100%;
+    height: 19.4rem;
+  }
 `
 
 export const CardCollection = styled.div`
@@ -182,6 +259,10 @@ export const CollectionsInformations = styled.div`
     opacity: 0.8;
     margin-top: 0.4rem;
   }
+
+  @media (max-width: 447px) {
+    font-size: 0.785rem;
+  }
 `
 
 export const DateInfo = styled.div`
@@ -193,5 +274,9 @@ export const DateInfo = styled.div`
 
   i {
     font-size: 0.9rem;
+  }
+
+  @media (max-width: 447px) {
+    font-size: 0.7rem;
   }
 `
