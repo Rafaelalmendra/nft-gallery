@@ -18,4 +18,8 @@ export const Container = styled.footer`
     color: var(--green);
     text-decoration: underline;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
 `

@@ -9,6 +9,7 @@ export const Container = styled.div`
 
     @media (max-width: 768px) {
       margin-top: 0;
+      font-size: 1.475rem;
     }
   }
 `
