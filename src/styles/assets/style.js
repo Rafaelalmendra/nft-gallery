@@ -112,8 +112,12 @@ export const Informations = styled.div`
     &:hover {
       filter: brightness(0.9);
     }
+  }
 
-    @media (max-width: 447px) {
+  @media (max-width: 447px) {
+    width: 100%;
+
+    button {
       font-size: 0.875rem;
     }
   }
