@@ -20,7 +20,6 @@ export default function MoreCollections() {
 
     axios.request(options)
       .then(function (response) {
-        console.log(response.data);
         setItens(response.data);
       })
       .catch(function (error) {

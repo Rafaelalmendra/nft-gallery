@@ -66,7 +66,6 @@ export default function Asset() {
 
       axios.request(options)
         .then(function (response) {
-          console.log(response.data);
           setCollections(response.data);
         })
         .catch(function (error) {
@@ -91,6 +90,11 @@ export default function Asset() {
         ) : (
           <AssetContainer>
             <ImageAndOwner>
+              {asset.name === null ? (
+                <h2 className="mobile">{asset.collection.name} #{asset.token_id}</h2>
+              ) : (
+                <h2 className="mobile">{asset.name}</h2>
+              )}
               <h2 className="mobile">{asset.name}</h2>
               <img src={asset.image_url} alt={asset.name} />
               <p>Owned by <span>{asset.owner?.user?.username}</span></p>
@@ -98,7 +102,9 @@ export default function Asset() {
 
             <Informations>
               {asset.name === null ? (
-                <h2 className="desktop">Name not found</h2>
+                <>
+                  <h2 className="desktop">{asset.collection.name} #{asset.token_id}</h2>
+                </>
               ) : (
                 <h2 className="desktop">{asset.name}</h2>
               )}

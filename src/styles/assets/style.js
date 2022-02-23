@@ -57,7 +57,6 @@ export const ImageAndOwner = styled.div`
 
     span {
       color: var(--blue);
-      cursor: pointer;
     }
   }
 
@@ -164,7 +163,6 @@ export const Content = styled.div`
 
   span {
     color: var(--blue);
-    cursor: pointer;
   }
 
   p {
