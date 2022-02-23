@@ -52,7 +52,7 @@ export const Informations = styled.div`
   p {
     font-size: 1.125rem;
     font-weight: 500;
-    max-width: 12rem;
+    max-width: 6rem;
     text-indent: 42px each-line;
     
     display: -webkit-box;
