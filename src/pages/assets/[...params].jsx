@@ -40,7 +40,6 @@ export default function Asset() {
     axios.request(options)
       .then(function (response) {
         setAsset(response.data);
-        console.log(response.data);
       })
       .catch(function (error) {
         console.error(error);
