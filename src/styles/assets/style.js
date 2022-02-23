@@ -191,6 +191,7 @@ export const MoreCollections = styled.div`
 
   @media (max-width: 447px) {
     margin-top: 1.5rem;
+    margin-bottom: 4rem;
   }
 `
 
@@ -217,14 +218,13 @@ export const HeaderCollections = styled.div`
 
 export const ContainerCollections = styled.div`
   min-width: 25.188rem;
-  height: 21rem;
+  height: 18.75rem;
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
 
   @media (max-width: 447px) {
     min-width: 100%;
-    height: 19.4rem;
   }
 `
 
