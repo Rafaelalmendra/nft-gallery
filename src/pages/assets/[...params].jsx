@@ -95,7 +95,6 @@ export default function Asset() {
               ) : (
                 <h2 className="mobile">{asset.name}</h2>
               )}
-              <h2 className="mobile">{asset.name}</h2>
               <img src={asset.image_url} alt={asset.name} />
               <p>Owned by <span>{asset.owner?.user?.username}</span></p>
             </ImageAndOwner>
