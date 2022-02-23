@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Letmeask" src="github/mockup.svg" />
+    <img alt="NftClub" src="github/mockup.svg" />
 </h1>
 
 <br>
