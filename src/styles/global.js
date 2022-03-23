@@ -131,4 +131,4 @@ export default createGlobalStyle`
       margin: 0 2rem 0 2rem;
     }
   }
-`
+`;

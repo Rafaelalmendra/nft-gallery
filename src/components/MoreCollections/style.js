@@ -1,18 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 4rem;
-  margin-bottom: 6rem;
-
-  h3 {
-    font-size: 1.875rem;
-    font-weight: 400;
-
-    @media (max-width: 768px) {
-      font-size: 1.475rem;
-    }
-  }
-`
+  margin: 4rem 0 6rem 0;
+`;
 
 export const Pagination = styled.div`
   display: flex;
@@ -20,14 +10,12 @@ export const Pagination = styled.div`
   justify-content: center;
   gap: 0.875rem;
   margin-top: 3.625rem;
-
   button:disabled {
     opacity: 0.4;
   }
-  
   i {
     font-size: 2rem;
     color: var(--blue);
     cursor: pointer;
   }
-`
+`;

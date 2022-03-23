@@ -20,7 +20,7 @@ export const Container = styled.div`
       text-align: center;
     }
   }
-`
+`;
 
 export const CardContainer = styled.div`
   width: 100%;
@@ -45,7 +45,7 @@ export const CardContainer = styled.div`
     justify-content: center;
     margin-top: 2rem;
   }
-`
+`;
 
 export const Card = styled.div`
   display: flex;
@@ -85,7 +85,7 @@ export const Card = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
 export const Informations = styled.div`
   padding: 0.5rem;
@@ -106,7 +106,7 @@ export const Informations = styled.div`
   @media (max-width: 667px) {
     gap: 0.5rem;
   }
-`
+`;
 
 export const DateInfo = styled.div`
   display: flex;
@@ -118,4 +118,4 @@ export const DateInfo = styled.div`
   i {
     font-size: 1rem;
   }
-`
+`;

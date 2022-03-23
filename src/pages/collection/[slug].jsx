@@ -1,37 +1,35 @@
-/* eslint-disable @next/next/no-img-element */
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import Link from "next/link";
 import axios from "axios";
-
 import {
   Container,
   CardContainer,
   Card,
   Informations,
-  DateInfo
-} from '../../styles/collection/style';
+  DateInfo,
+} from "../../styles/collection/style";
 
 export default function Collection() {
-  const [ collection, setCollection ] = useState([]);
-  const [ isFetching, setIsFetching ] = useState(true);
+  const [collection, setCollection] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
   const router = useRouter();
   const slugCollection = router.query.slug;
-
   useEffect(() => {
     if (slugCollection) {
       const options = {
-        method: 'GET',
-        url: 'https://api.opensea.io/api/v1/assets',
+        method: "GET",
+        url: "https://api.opensea.io/api/v1/assets",
         params: {
           collection: slugCollection,
-          limit: '40',
+          limit: "40",
         },
-        headers: { Accept: 'application/json' }
+        headers: { Accept: "application/json" },
       };
 
-      axios.request(options)
+      axios
+        .request(options)
         .then(function (response) {
           setCollection(response.data);
         })
@@ -41,8 +39,8 @@ export default function Collection() {
         .finally(() => {
           setIsFetching(false);
         });
-    };
-  }, [ slugCollection ]);
+    }
+  }, [slugCollection]);
 
   return (
     <>
@@ -57,16 +55,16 @@ export default function Collection() {
             <div className="lds-dual-ring"></div>
           </div>
         )}
-        
+
         <CardContainer>
           {collection.assets?.map((item) => (
             <>
-              <Link href={`/assets/${item.asset_contract.address}/${item.token_id}`}>
+              <Link
+                href={`/assets/${item.asset_contract.address}/${item.token_id}`}
+              >
                 <a>
                   <Card>
-                    {item.image_url === null ? (
-                      null
-                    ) : (
+                    {item.image_url === null ? null : (
                       <img src={item.image_url} alt="" />
                     )}
                     <Informations>
@@ -76,10 +74,14 @@ export default function Collection() {
                         <p>{item.name}</p>
                       )}
                       <DateInfo>
-                        <i className="material-icons-outlined">calendar_today</i>
-                        {new Intl.DateTimeFormat('en-US').format(
-                          new Date(item.asset_contract.created_date)
-                        )}
+                        <i className="material-icons-outlined">
+                          calendar_today
+                        </i>
+                        {new Intl.DateTimeFormat("en-US", {
+                          month: "2-digit",
+                          day: "2-digit",
+                          year: "numeric",
+                        }).format(new Date(item.asset_contract.created_date))}
                       </DateInfo>
                       <div className="divider"></div>
                     </Informations>
@@ -92,4 +94,4 @@ export default function Collection() {
       </Container>
     </>
   );
-};
+}
