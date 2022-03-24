@@ -7,7 +7,6 @@ const useAxiosFetch = (dataUrl) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const isMounted = true;
     const fetchData = async (url, collection) => {
       setIsLoading(true);
       try {
@@ -18,7 +17,7 @@ const useAxiosFetch = (dataUrl) => {
           },
           headers: { Accept: "application/json" },
         });
-        if (isMounted) {
+        if (response.status === 200) {
           setData(response.data);
           setFetchError(null);
         }
@@ -28,15 +27,10 @@ const useAxiosFetch = (dataUrl) => {
           setData([]);
         }
       } finally {
-        isMounted && setTimeout(() => setIsLoading(false), 2000);
+        setTimeout(() => setIsLoading(false), 2000);
       }
     };
     fetchData(dataUrl);
-    const cleanUp = () => {
-      console.log("clean up function");
-      isMounted = false;
-    };
-    return cleanUp;
   }, [dataUrl]);
 
   return { data, fetchError, isLoading };
