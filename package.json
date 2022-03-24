@@ -1,6 +1,16 @@
 {
-  "name": "nft",
+  "name": "nft-club",
+  "description": "NFTCLUB is a website capable of listing NFT collections and assets.",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Rafael Almendra",
+    "email": "rafaelalmendra28@gmail.com",
+    "url": "https://rafaelalmendra.com"
+  },
+  "engines": {
+    "node": ">=14.17.6"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
