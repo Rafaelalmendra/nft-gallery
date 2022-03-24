@@ -11,14 +11,14 @@ export const ContainerCollections = styled.div`
     grid-template-columns: 50% 50%;
     gap: 0.875rem;
   }
-`
+`;
 
 export const CardCollection = styled.div`
   width: 18.75rem;
   display: flex;
   align-items: center;
   gap: 1.375rem;
-  
+
   margin-top: 2.313rem;
   padding-bottom: 1.6rem;
 
@@ -46,7 +46,7 @@ export const CardCollection = styled.div`
       height: 2.938rem;
     }
   }
-`
+`;
 
 export const Informations = styled.div`
   p {
@@ -54,11 +54,11 @@ export const Informations = styled.div`
     font-weight: 500;
     max-width: 6rem;
     text-indent: 42px each-line;
-    
+
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 
@@ -78,4 +78,4 @@ export const Informations = styled.div`
       font-size: 0.85rem;
     }
   }
-`
+`;

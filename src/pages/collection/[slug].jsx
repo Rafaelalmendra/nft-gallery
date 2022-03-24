@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
+import Loading from "@/components/Loading";
 import {
   Container,
   CardContainer,
@@ -27,7 +28,6 @@ export default function Collection() {
         },
         headers: { Accept: "application/json" },
       };
-
       axios
         .request(options)
         .then(function (response) {
@@ -43,55 +43,43 @@ export default function Collection() {
   }, [slugCollection]);
 
   return (
-    <>
+    <Container className="margin">
       <Head>
         <title>NFTCLUB | {slugCollection}</title>
       </Head>
-      <Container className="margin">
-        <h2>{slugCollection}</h2>
-
-        {isFetching && (
-          <div className="loading">
-            <div className="lds-dual-ring"></div>
-          </div>
-        )}
-
-        <CardContainer>
-          {collection.assets?.map((item) => (
-            <>
-              <Link
-                href={`/assets/${item.asset_contract.address}/${item.token_id}`}
-              >
-                <a>
-                  <Card>
-                    {item.image_url === null ? null : (
-                      <img src={item.image_url} alt="" />
-                    )}
-                    <Informations>
-                      {item.name === null ? (
-                        <p>{slugCollection}</p>
-                      ) : (
-                        <p>{item.name}</p>
-                      )}
-                      <DateInfo>
-                        <i className="material-icons-outlined">
-                          calendar_today
-                        </i>
-                        {new Intl.DateTimeFormat("en-US", {
-                          month: "2-digit",
-                          day: "2-digit",
-                          year: "numeric",
-                        }).format(new Date(item.asset_contract.created_date))}
-                      </DateInfo>
-                      <div className="divider"></div>
-                    </Informations>
-                  </Card>
-                </a>
-              </Link>
-            </>
-          ))}
-        </CardContainer>
-      </Container>
-    </>
+      <h2>{slugCollection}</h2>
+      {isFetching && <Loading />}
+      <CardContainer>
+        {collection.assets?.map((item) => (
+          <Link
+            href={`/assets/${item.asset_contract.address}/${item.token_id}`}
+          >
+            <a>
+              <Card>
+                {item.image_url === null ? null : (
+                  <img src={item.image_url} alt="" />
+                )}
+                <Informations>
+                  {item.name === null ? (
+                    <p>{slugCollection}</p>
+                  ) : (
+                    <p>{item.name}</p>
+                  )}
+                  <DateInfo>
+                    <i className="material-icons-outlined">calendar_today</i>
+                    {new Intl.DateTimeFormat("en-US", {
+                      month: "2-digit",
+                      day: "2-digit",
+                      year: "numeric",
+                    }).format(new Date(item.asset_contract.created_date))}
+                  </DateInfo>
+                  <div className="divider"></div>
+                </Informations>
+              </Card>
+            </a>
+          </Link>
+        ))}
+      </CardContainer>
+    </Container>
   );
 }
