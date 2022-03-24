@@ -1,10 +1,10 @@
-import Link from "next/link";
-import Loading from "@/components/Loading";
+import Link from 'next/link';
+import Loading from '@/components/Loading';
 import {
   ContainerCollections,
   CardCollection,
   Informations,
-} from "styles/cards";
+} from 'styles/cards';
 
 const CollectionCard = ({ data, isLoading, fetchError }) => (
   <>

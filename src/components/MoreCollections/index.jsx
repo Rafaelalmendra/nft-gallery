@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { Container } from "./style";
-import { Subtitle } from "../Typography";
-import CollectionCard from "../CollectionCard";
-import Pagination from "../Pagination";
-import useAxiosFetch from "hooks/useAxiosFetch";
+import { useEffect, useState } from 'react';
+import { Container } from './style';
+import { Subtitle } from '../Typography';
+import CollectionCard from '../CollectionCard';
+import Pagination from '../Pagination';
+import useAxiosFetch from 'hooks/useAxiosFetch';
 
 const MoreCollections = () => {
   const [collection, setCollection] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [itensPerPage] = useState(10);
-  const { data, fetchError, isLoading } = useAxiosFetch("/assets");
+  const [itensPerPage] = useState(15);
+  const { data, fetchError, isLoading } = useAxiosFetch('/assets');
   useEffect(() => {
     setCollection(data);
     console.log(data?.assets);

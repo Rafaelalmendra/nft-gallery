@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import api from "services/api";
+import { useState, useEffect } from 'react';
+import api from 'services/api';
 
 const useAxiosFetch = (dataUrl) => {
   const [data, setData] = useState([]);
@@ -7,22 +7,16 @@ const useAxiosFetch = (dataUrl) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async (url, collection) => {
+    const fetchData = async (url) => {
       setIsLoading(true);
       try {
-        const response = await api.get(url, {
-          params: {
-            collection,
-            limit: 50,
-          },
-          headers: { Accept: "application/json" },
-        });
+        const response = await api.get(url);
         if (response.status === 200) {
           setData(response.data);
           setFetchError(null);
         }
       } catch (error) {
-        if (isMounted) {
+        if (error.response) {
           setFetchError(error.message);
           setData([]);
         }

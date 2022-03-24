@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container } from './style';
 
 const Pagination = ({ currentPage, setCurrentPage }) => (
   <Container>
