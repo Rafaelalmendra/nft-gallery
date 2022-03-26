@@ -9,6 +9,7 @@ const MoreCollections = () => {
   const [collection, setCollection] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [itensPerPage] = useState(15);
+
   const { data, fetchError, isLoading } = useAxiosFetch('/assets');
   useEffect(() => {
     setCollection(data);

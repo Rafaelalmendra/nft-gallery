@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -20,6 +20,13 @@ export const Container = styled.div`
       text-align: center;
     }
   }
+`;
+
+export const LoadingContainer = styled.div`
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CardContainer = styled.div`

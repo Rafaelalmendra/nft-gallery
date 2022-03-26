@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import useAxiosFetch from 'hooks/useAxiosFetch';
 import Loading from '../Loading';
 import Link from 'next/link';
-import api from 'services/api';
 import {
   ContainerCollections,
   CardCollection,
@@ -12,37 +12,20 @@ import {
 } from './style';
 
 const RelatedCollections = ({ slugAsset }) => {
-  const [loading, setLoading] = useState(false);
   const [relatedCollections, setRealatedCollections] = useState([]);
+  const { data, fetchError, isLoading } = useAxiosFetch(
+    '/assets',
+    slugAsset,
+    15
+  );
   useEffect(() => {
-    setLoading(true);
-    const options = {
-      method: 'GET',
-      baseURL: api.baseURL,
-      url: '/assets',
-      params: {
-        collection: slugAsset,
-        limit: '15',
-      },
-      headers: { Accept: 'application/json' },
-    };
-    api
-      .request(options)
-      .then(function (response) {
-        setRealatedCollections(response.data.assets);
-      })
-      .catch(function (error) {
-        console.error(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [slugAsset]);
+    setRealatedCollections(data.assets);
+  }, [data]);
 
   return (
     <Collections>
-      {loading && <Loading />}
-      {!loading && (
+      {isLoading && <Loading />}
+      {!isLoading && !fetchError && (
         <>
           <HeaderCollections>
             <i className="material-icons">view_module</i>
