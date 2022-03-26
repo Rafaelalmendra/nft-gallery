@@ -27,13 +27,6 @@ This project was developed with the following technologies:
 
 ## 🚀 How to run
 
-Clone the project and access its folder.
-
-```bash
-$ git clone https://github.com/Rafaelalmendra/nft-gallery.git
-$ cd nft-gallery
-```
-
 To start it, follow the steps below:
 ```bash
 # Install dependencies
