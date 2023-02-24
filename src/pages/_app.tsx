@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Script from 'next/script';
-import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components';
 
 // components
@@ -12,7 +11,7 @@ import GlobalStyle from '../styles/global';
 import 'swiper/swiper.scss';
 import 'swiper/swiper-bundle.css';
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   const toggleTheme = () => {
