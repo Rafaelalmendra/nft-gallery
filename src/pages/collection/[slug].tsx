@@ -48,7 +48,13 @@ const Collection: NextPage = () => {
           <S.CardContainer>
             {collection.assets?.map((item) => (
               <Link
-                href={`/assets/${item.asset_contract.address}/${item.token_id}`}
+                href={{
+                  pathname: `/assets`,
+                  query: {
+                    address: item.asset_contract.address,
+                    id: item.token_id,
+                  }
+                }}
               >
                 <a>
                   <S.Card>

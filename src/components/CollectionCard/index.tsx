@@ -10,7 +10,13 @@ import {
   Informations,
 } from 'styles/cards';
 
-const CollectionCard = ({ data, isLoading, fetchError }) => (
+interface CollectionCardProps {
+  data: any;
+  isLoading: boolean;
+  fetchError: string;
+}
+
+const CollectionCard = ({ data, isLoading, fetchError }: CollectionCardProps) => (
   <>
     {isLoading && <Loading />}
 
