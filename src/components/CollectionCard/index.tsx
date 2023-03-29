@@ -29,7 +29,7 @@ const CollectionCard = ({
 
     {!isLoading && !fetchError && (
       <ContainerCollections>
-        {data.map((item) => (
+        {data?.map((item) => (
           <Link href={`/collection/${item.collection?.slug}`}>
             <a>
               <CardCollection>

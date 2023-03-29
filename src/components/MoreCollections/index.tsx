@@ -16,7 +16,7 @@ const MoreCollections = () => {
     <S.Container className="margins">
       <Subtitle>More collections</Subtitle>
 
-      {data.assets.length > 0 && (
+      {data?.assets?.length > 0 && (
         <CollectionCard
           data={data.assets}
           isLoading={isLoading}
