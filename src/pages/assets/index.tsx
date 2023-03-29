@@ -13,8 +13,9 @@ import * as S from 'styles/assets/styles';
 
 const Asset = () => {
   const router = useRouter();
-  const { address, id } = router.query;
   const [asset, setAsset] = useState<any>([]);
+
+  const { address, id } = router.query;
 
   const { data, fetchError, isLoading } = useAxiosFetch({
     url: `/asset/${address}/${id}`,
@@ -24,13 +25,13 @@ const Asset = () => {
     setAsset(data);
   }, [data]);
 
-  const slugAsset = asset.collection.slug;
+  const slugAsset = asset.collection?.slug;
 
   return (
     <S.Container className="margin">
       <Head>
         <title>
-          NFTCLUB | {asset.name ? asset.name : asset.collection.name}
+          NFTCLUB | {asset.name ? asset.name : asset.collection?.name}
         </title>
       </Head>
 

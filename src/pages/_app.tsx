@@ -23,6 +23,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Script
         id="ms_clarity"
         type="text/javascript"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
           (function(c,l,a,r,i,t,y){
