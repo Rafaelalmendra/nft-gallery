@@ -21,7 +21,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Script
-        id="clarity"
+        id="ms_clarity"
         type="text/javascript"
         dangerouslySetInnerHTML={{
           __html: `
