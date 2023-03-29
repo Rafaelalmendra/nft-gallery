@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NextPage } from "next/types";
+import { NextPage } from 'next/types';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ const Collection: NextPage = () => {
     url: `/assets`,
     setCollection: slugCollection,
     setLimit: 15,
-  })
+  });
 
   useEffect(() => {
     setCollection(data);
@@ -53,18 +53,23 @@ const Collection: NextPage = () => {
                   query: {
                     address: item.asset_contract.address,
                     id: item.token_id,
-                  }
+                  },
                 }}
               >
                 <a>
                   <S.Card>
-                    {item.image_url === null ?
+                    {item.image_url === null ? (
                       <S.NotImage>
                         <p>Image not found</p>
                       </S.NotImage>
-                      :
-                      <img src={item.image_url} alt="" />
-                    }
+                    ) : (
+                      <img
+                        src={item.image_url}
+                        alt={`
+                        ${item.name === null ? slugCollection : item.name}
+                      `}
+                      />
+                    )}
                     <S.Informations>
                       {item.name === null ? (
                         <p>{slugCollection}</p>
@@ -92,6 +97,6 @@ const Collection: NextPage = () => {
       )}
     </S.Container>
   );
-}
+};
 
 export default Collection;

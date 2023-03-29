@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContainerCollections = styled.div`
   width: 100%;
@@ -37,9 +37,9 @@ export const CardCollection = styled.div`
   }
 
   img {
-    border-radius: 50%;
     width: 4.375rem;
     height: 4.375rem;
+    border-radius: 50%;
 
     @media (max-width: 768px) {
       width: 2.938rem;
@@ -77,5 +77,23 @@ export const Informations = styled.div`
     @media (max-width: 768px) {
       font-size: 0.85rem;
     }
+  }
+`;
+
+export const NotImage = styled.div`
+  width: 4.375rem;
+  height: 4.375rem;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #333;
+
+  p {
+    font-size: 8px;
+    font-weight: 500;
+    color: var(--white);
   }
 `;
