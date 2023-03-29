@@ -5,7 +5,7 @@
 <br>
 
 <p align="center">
-  <a href="https://nft-gallery-iota.vercel.app/" target="_blank">
+  <a href="nftclub-app.netlify.app" target="_blank">
     click here to access the deploy
   </a>
 </p>
